@@ -2,6 +2,7 @@ package net.craftions.mlg;
 
 import net.craftions.mlg.events.EventBlockBreak;
 import net.craftions.mlg.events.EventBlockPlace;
+import net.craftions.mlg.events.EventPlayerDamage;
 import net.craftions.mlg.events.EventPlayerJoin;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -34,6 +35,7 @@ public final class Mlg extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockBreak(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerDamage(), this);
     }
 
     @Override
@@ -45,16 +47,15 @@ public final class Mlg extends JavaPlugin {
     public static void start(){
         Player p1 = null;
         Player p2 = null;
+        Boolean t = false;
         for(Player p : Bukkit.getOnlinePlayers()){
             try {
-                if(p1.equals(null)){
-                    p1 = p;
-                }else {
+                if(t){
                     p2 = p;
+                }else {
+                    p1 = p;
                 }
-            }catch (NullPointerException ex ){
-
-            }
+            }catch (NullPointerException ex ){ }
         }
         p1.teleport(spawn_blue);
         p2.teleport(spawn_red);
