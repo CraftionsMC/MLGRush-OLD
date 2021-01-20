@@ -8,6 +8,6 @@ public class EventPlayerDamage implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
-        event.setCancelled(true);
+        event.setDamage(0d);
     }
 }
