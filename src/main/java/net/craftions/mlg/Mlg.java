@@ -46,10 +46,14 @@ public final class Mlg extends JavaPlugin {
         Player p1 = null;
         Player p2 = null;
         for(Player p : Bukkit.getOnlinePlayers()){
-            if(p1.equals(null)){
-                p1 = p;
-            }else {
-                p2 = p;
+            try {
+                if(p1.equals(null)){
+                    p1 = p;
+                }else {
+                    p2 = p;
+                }
+            }catch (NullPointerException ex ){
+
             }
         }
         p1.teleport(spawn_blue);
