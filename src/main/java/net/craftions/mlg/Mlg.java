@@ -54,6 +54,7 @@ public final class Mlg extends JavaPlugin {
                     p2 = p;
                 }else {
                     p1 = p;
+                    t = true;
                 }
             }catch (NullPointerException ex ){ }
         }
