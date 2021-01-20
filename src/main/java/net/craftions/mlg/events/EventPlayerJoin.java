@@ -27,8 +27,8 @@ public class EventPlayerJoin implements Listener {
                 Mlg.start();
             }else {
                 Bukkit.broadcastMessage(Mlg.prefix + "§cEs wird auf einen Spieler gewartet...");
+                e.getPlayer().teleport(Mlg.spawn);
             }
-            e.getPlayer().teleport(Mlg.spawn);
         }
     }
 }
