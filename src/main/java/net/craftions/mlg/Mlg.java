@@ -58,8 +58,8 @@ public final class Mlg extends JavaPlugin {
                 }
             }catch (NullPointerException ex ){ }
         }
-        p1.teleport(spawn_blue);
-        p2.teleport(spawn_red);
+        p1.teleport(spawn_red);
+        p2.teleport(spawn_blue);
         player1 = p1;
         player2 = p2;
         Bukkit.getScheduler().scheduleSyncRepeatingTask(mlg, new Runnable() {
