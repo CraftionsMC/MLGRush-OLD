@@ -12,17 +12,16 @@ public class EventBlockBreak implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent e){
         if(!e.getPlayer().getGameMode().equals(GameMode.CREATIVE)){
-            if((!e.getBlock().getType().equals(Material.SANDSTONE) && !e.getBlock().getType().equals(Material.RED_WOOL) && !e.getBlock().getType().equals(Material.BLUE_WOOL))){
+            if(!e.getBlock().getType().equals(Material.SANDSTONE) && !e.getBlock().getType().equals(Material.RED_WOOL) && !e.getBlock().getType().equals(Material.BLUE_WOOL)){
                 e.setCancelled(true);
             }else {
-                if(e.getBlock().getType().equals(Material.RED_WOOL)){
-                    if(e.getPlayer().equals(Mlg.player2)){
+                if(e.getBlock().getType().equals(Material.RED_WOOL)) {
+                    if (e.getPlayer().equals(Mlg.player2)) {
                         Mlg.pointsBlue++;
                         Mlg.processPointUpdate();
                     }
                     e.setCancelled(true);
-                }
-                if(e.getBlock().getType().equals(Material.BLUE_WOOL)){
+                }else if(e.getBlock().getType().equals(Material.BLUE_WOOL)){
                     if(e.getPlayer().equals(Mlg.player1)){
                         Mlg.pointsRed++;
                         Mlg.processPointUpdate();

@@ -6,7 +6,9 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public final class Mlg extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerDamage(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerMove(), this);
         Bukkit.getPluginManager().registerEvents(new EventFoodLevelChange(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerQuit(), this);
     }
 
     @Override
@@ -44,6 +47,8 @@ public final class Mlg extends JavaPlugin {
     }
 
     public static void start(){
+        spawn_red.setPitch(270);
+        spawn_blue.setPitch(90);
         isStarted = true;
         Player p1 = null;
         Player p2 = null;
@@ -88,15 +93,33 @@ public final class Mlg extends JavaPlugin {
                 }
             }, 2*20L);
         }else {
+            for(Location l : locs){
+                l.getBlock().setType(Material.AIR);
+            }
+            locs.clear();
             player1.teleport(spawn_red);
             player2.teleport(spawn_blue);
+            resetInventory();
         }
+    }
+
+    public static void resetInventory(){
+        ItemStack stick = new ItemStack(Material.STICK);
+        ItemStack blocks = new ItemStack(Material.SANDSTONE, 64);
+        ItemStack pick = new ItemStack(Material.WOODEN_PICKAXE);
+        stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
+        pick.addUnsafeEnchantment(Enchantment.DIG_SPEED, 2);
+        player1.getInventory().clear();
+        player2.getInventory().clear();
+        player1.getInventory().addItem(stick, blocks, pick);
+        player2.getInventory().addItem(stick, blocks, pick);
     }
 
     public static void end(){
         for(Location l : locs){
             l.getBlock().setType(Material.AIR);
         }
+        locs.clear();
         for(Player p : Bukkit.getOnlinePlayers()){
             p.kickPlayer("Die Runde ist vorbei!");
         }
