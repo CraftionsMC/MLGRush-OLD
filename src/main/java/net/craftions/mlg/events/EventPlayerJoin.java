@@ -22,6 +22,7 @@ public class EventPlayerJoin implements Listener {
             }
             e.getPlayer().teleport(Mlg.spawn_red);
         }else {
+            e.getPlayer().setGameMode(GameMode.SURVIVAL);
             if(Bukkit.getOnlinePlayers().size() == 2){
                 Bukkit.broadcastMessage(Mlg.prefix + "§2Das Spiel startet!");
                 Mlg.start();
