@@ -47,8 +47,8 @@ public final class Mlg extends JavaPlugin {
     }
 
     public static void start(){
-        spawn_red.setPitch(270);
-        spawn_blue.setPitch(90);
+        spawn_red.setYaw(270);
+        spawn_blue.setYaw(90);
         isStarted = true;
         Player p1 = null;
         Player p2 = null;
