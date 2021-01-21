@@ -18,6 +18,7 @@ public class EventPlayerQuit implements Listener {
             for(Player p : Bukkit.getOnlinePlayers()){
                 p.kickPlayer("Ein Spieler hat die Runde verlassen!");
             }
+            Mlg.end();
         }
     }
 
