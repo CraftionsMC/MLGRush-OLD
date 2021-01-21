@@ -11,9 +11,9 @@ public class EventPlayerMove implements Listener {
     public void onMove(PlayerMoveEvent e){
         if(e.getTo().getY() < 0){
             if(Mlg.player1.equals(e.getPlayer())){
-                e.getPlayer().teleport(Mlg.spawn_blue);
-            }else {
                 e.getPlayer().teleport(Mlg.spawn_red);
+            }else {
+                e.getPlayer().teleport(Mlg.spawn_blue);
             }
         }
     }
